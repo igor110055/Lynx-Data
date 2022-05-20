@@ -1,34 +1,33 @@
 import asyncio
 from binance import AsyncClient, BinanceSocketManager
-import sqlite3
+import pandas as pd
+from data import Database
 
 
 async def main():
-    con = sqlite3.connect('Database/binance.db')
-    cur = con.cursor()
-    cur.execute('''CREATE TABLE IF NOT EXISTS bnbusdt
-                   (event text, time text, symbol text, close real, open real,
-                   high real, low real, totalbase real, totalquote real)''')
-    cur.execute('''CREATE TABLE IF NOT EXISTS btcusdt
-                   (event text, time text, symbol text, close real, open real,
-                    high real, low real, totalbase real, totalquote real)''')
+    db = Database("Binance.db")
     client = await AsyncClient.create()
     bm = BinanceSocketManager(client)
+    markets = ['bnbusdt@miniTicker', 'btcusdt@miniTicker']
     # start any sockets here, i.e a trade socket
-    ms = bm.multiplex_socket(['bnbusdt@miniTicker', 'btcusdt@miniTicker'])
+    ms = bm.multiplex_socket(markets)
     # then start receiving messages
     async with ms as tscm:
         while True:
             res = await tscm.recv()
-            print(list(res['data'].values()))
+            data = res['data']
+            data.pop('e')
+            print(data)
             if res['stream'] == 'bnbusdt@miniTicker':
-                cur.execute("INSERT INTO bnbusdt VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", list(res['data'].values()))
+                df1 = pd.DataFrame([data])
+                df1.to_sql('BNBUSDT',
+                           con=db.connection,
+                           if_exists='append')
             else:
-                cur.execute("INSERT INTO btcusdt VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", list(res['data'].values()))
-            con.commit()
-
-    await client.close_connection()
-    con.close()
+                df2 = pd.DataFrame([data])
+                df2.to_sql('BTCUSDT',
+                       con=db.connection,
+                       if_exists='append')
 
 
 if __name__ == "__main__":
