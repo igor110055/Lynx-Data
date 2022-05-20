@@ -2,6 +2,7 @@ import asyncio
 import websockets
 import json
 
+
 async def collect():
     uri = "wss://ftx.com/ws/"
     channel = 'ticker'
