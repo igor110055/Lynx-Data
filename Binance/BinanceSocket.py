@@ -5,7 +5,8 @@ from data import Database
 
 
 async def main():
-    db = Database("Binance.db")
+    path = "Binance.db"
+    db = Database(path)
     client = await AsyncClient.create()
     bm = BinanceSocketManager(client)
     markets = ['bnbusdt@miniTicker', 'btcusdt@miniTicker']
@@ -18,16 +19,10 @@ async def main():
             data = res['data']
             data.pop('e')
             print(data)
-            if res['stream'] == 'bnbusdt@miniTicker':
-                df1 = pd.DataFrame([data])
-                df1.to_sql('BNBUSDT',
-                           con=db.connection,
-                           if_exists='append')
-            else:
-                df2 = pd.DataFrame([data])
-                df2.to_sql('BTCUSDT',
-                       con=db.connection,
-                       if_exists='append')
+            df = pd.DataFrame([data])
+            df.to_sql(res['stream'].split('@', 1)[0],
+                      con=db.connection,
+                      if_exists='append')
 
 
 if __name__ == "__main__":
