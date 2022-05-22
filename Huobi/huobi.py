@@ -3,8 +3,12 @@ import websockets
 import json
 import gzip
 import pandas as pd
-from data import Database
 import datetime
+import sys
+
+sys.path.append('../')
+
+from data import Database
 
 
 def push(res, db):

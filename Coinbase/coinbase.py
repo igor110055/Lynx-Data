@@ -2,6 +2,10 @@ import asyncio
 import websockets
 import json
 import pandas as pd
+import sys
+
+sys.path.append('../')
+
 from data import Database
 
 
@@ -34,5 +38,6 @@ async def collect():
             res = await websocket.recv()
             res = json.loads(res)
             push(res, db)
+
 
 asyncio.get_event_loop().run_until_complete(collect())

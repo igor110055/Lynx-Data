@@ -2,6 +2,9 @@ import asyncio
 import websockets
 import json
 import pandas as pd
+import sys
+
+sys.path.append('../')
 from data import Database
 
 

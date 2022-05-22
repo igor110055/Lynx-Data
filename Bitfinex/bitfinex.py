@@ -2,8 +2,11 @@ import asyncio
 import websockets
 import json
 import pandas as pd
-from data import Database
 import datetime
+import sys
+
+sys.path.append('../')
+from data import Database
 
 
 def split(data):
