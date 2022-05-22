@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dataSource name="Binance">
+<dataSource name="Ftx">
   <database-model serializer="dbm" dbms="SQLITE" family-id="SQLITE" format-version="4.39">
     <root id="1">
       <ServerVersion>3.36.0</ServerVersion>
@@ -1284,146 +1284,90 @@
     <argument id="472" parent="162">
       <Position>1</Position>
     </argument>
-    <table id="473" parent="163" name="bnbusdt"/>
-    <table id="474" parent="163" name="btcusdt"/>
-    <table id="475" parent="163" name="miniTicker"/>
-    <table id="476" parent="163" name="sqlite_master">
+    <table id="473" parent="163" name="BNB/USDT"/>
+    <table id="474" parent="163" name="BTC/USDT"/>
+    <table id="475" parent="163" name="sqlite_master">
       <System>1</System>
     </table>
-    <column id="477" parent="473" name="index">
+    <column id="476" parent="473" name="index">
       <DataType>INTEGER|0s</DataType>
       <Position>1</Position>
     </column>
-    <column id="478" parent="473" name="E">
-      <DataType>INTEGER|0s</DataType>
+    <column id="477" parent="473" name="bid">
+      <DataType>REAL|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="479" parent="473" name="s">
-      <DataType>TEXT|0s</DataType>
+    <column id="478" parent="473" name="ask">
+      <DataType>REAL|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="480" parent="473" name="c">
-      <DataType>TEXT|0s</DataType>
+    <column id="479" parent="473" name="bidSize">
+      <DataType>REAL|0s</DataType>
       <Position>4</Position>
     </column>
-    <column id="481" parent="473" name="o">
-      <DataType>TEXT|0s</DataType>
+    <column id="480" parent="473" name="askSize">
+      <DataType>REAL|0s</DataType>
       <Position>5</Position>
     </column>
-    <column id="482" parent="473" name="h">
-      <DataType>TEXT|0s</DataType>
+    <column id="481" parent="473" name="last">
+      <DataType>REAL|0s</DataType>
       <Position>6</Position>
     </column>
-    <column id="483" parent="473" name="l">
-      <DataType>TEXT|0s</DataType>
+    <column id="482" parent="473" name="time">
+      <DataType>REAL|0s</DataType>
       <Position>7</Position>
     </column>
-    <column id="484" parent="473" name="v">
-      <DataType>TEXT|0s</DataType>
-      <Position>8</Position>
-    </column>
-    <column id="485" parent="473" name="q">
-      <DataType>TEXT|0s</DataType>
-      <Position>9</Position>
-    </column>
-    <index id="486" parent="473" name="ix_bnbusdt_index">
+    <index id="483" parent="473" name="ix_BNB/USDT_index">
       <ColNames>index</ColNames>
     </index>
-    <column id="487" parent="474" name="index">
+    <column id="484" parent="474" name="index">
       <DataType>INTEGER|0s</DataType>
       <Position>1</Position>
     </column>
-    <column id="488" parent="474" name="E">
-      <DataType>INTEGER|0s</DataType>
+    <column id="485" parent="474" name="bid">
+      <DataType>REAL|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="489" parent="474" name="s">
-      <DataType>TEXT|0s</DataType>
+    <column id="486" parent="474" name="ask">
+      <DataType>REAL|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="490" parent="474" name="c">
-      <DataType>TEXT|0s</DataType>
+    <column id="487" parent="474" name="bidSize">
+      <DataType>REAL|0s</DataType>
       <Position>4</Position>
     </column>
-    <column id="491" parent="474" name="o">
-      <DataType>TEXT|0s</DataType>
+    <column id="488" parent="474" name="askSize">
+      <DataType>REAL|0s</DataType>
       <Position>5</Position>
     </column>
-    <column id="492" parent="474" name="h">
-      <DataType>TEXT|0s</DataType>
+    <column id="489" parent="474" name="last">
+      <DataType>REAL|0s</DataType>
       <Position>6</Position>
     </column>
-    <column id="493" parent="474" name="l">
-      <DataType>TEXT|0s</DataType>
+    <column id="490" parent="474" name="time">
+      <DataType>REAL|0s</DataType>
       <Position>7</Position>
     </column>
-    <column id="494" parent="474" name="v">
-      <DataType>TEXT|0s</DataType>
-      <Position>8</Position>
-    </column>
-    <column id="495" parent="474" name="q">
-      <DataType>TEXT|0s</DataType>
-      <Position>9</Position>
-    </column>
-    <index id="496" parent="474" name="ix_btcusdt_index">
+    <index id="491" parent="474" name="ix_BTC/USDT_index">
       <ColNames>index</ColNames>
     </index>
-    <column id="497" parent="475" name="index">
-      <DataType>INTEGER|0s</DataType>
-      <Position>1</Position>
-    </column>
-    <column id="498" parent="475" name="E">
-      <DataType>INTEGER|0s</DataType>
-      <Position>2</Position>
-    </column>
-    <column id="499" parent="475" name="s">
-      <DataType>TEXT|0s</DataType>
-      <Position>3</Position>
-    </column>
-    <column id="500" parent="475" name="c">
-      <DataType>TEXT|0s</DataType>
-      <Position>4</Position>
-    </column>
-    <column id="501" parent="475" name="o">
-      <DataType>TEXT|0s</DataType>
-      <Position>5</Position>
-    </column>
-    <column id="502" parent="475" name="h">
-      <DataType>TEXT|0s</DataType>
-      <Position>6</Position>
-    </column>
-    <column id="503" parent="475" name="l">
-      <DataType>TEXT|0s</DataType>
-      <Position>7</Position>
-    </column>
-    <column id="504" parent="475" name="v">
-      <DataType>TEXT|0s</DataType>
-      <Position>8</Position>
-    </column>
-    <column id="505" parent="475" name="q">
-      <DataType>TEXT|0s</DataType>
-      <Position>9</Position>
-    </column>
-    <index id="506" parent="475" name="ix_miniTicker_index">
-      <ColNames>index</ColNames>
-    </index>
-    <column id="507" parent="476" name="type">
+    <column id="492" parent="475" name="type">
       <DataType>text|0s</DataType>
       <Position>1</Position>
     </column>
-    <column id="508" parent="476" name="name">
+    <column id="493" parent="475" name="name">
       <DataType>text|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="509" parent="476" name="tbl_name">
+    <column id="494" parent="475" name="tbl_name">
       <DataType>text|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="510" parent="476" name="rootpage">
+    <column id="495" parent="475" name="rootpage">
       <DataType>int|0s</DataType>
       <Position>4</Position>
     </column>
-    <column id="511" parent="476" name="sql">
+    <column id="496" parent="475" name="sql">
       <DataType>text|0s</DataType>
       <Position>5</Position>
     </column>
