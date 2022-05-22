@@ -1,7 +1,20 @@
 import asyncio
 from binance import AsyncClient, BinanceSocketManager
 import pandas as pd
+import sys
+
+sys.path.append('../')
 from data import Database
+
+
+def push(res, db):
+    data = res['data']
+    data.pop('e')
+    print(data)
+    df = pd.DataFrame([data])
+    df.to_sql(res['stream'].split('@', 1)[0],
+              con=db.connection,
+              if_exists='append')
 
 
 async def main():
@@ -16,13 +29,7 @@ async def main():
     async with ms as tscm:
         while True:
             res = await tscm.recv()
-            data = res['data']
-            data.pop('e')
-            print(data)
-            df = pd.DataFrame([data])
-            df.to_sql(res['stream'].split('@', 1)[0],
-                      con=db.connection,
-                      if_exists='append')
+            push(res, db)
 
 
 if __name__ == "__main__":
