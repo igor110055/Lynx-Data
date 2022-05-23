@@ -1,5 +1,6 @@
 import websocket
 import rel
+import datetime
 import json
 import pandas as pd
 from sockets.data import Database
@@ -28,9 +29,16 @@ class Ftx:
 
     def on_error(self, ws, error):
         print(error)
+        with open("logs/FTX.txt", 'a') as f:
+            error = error + " " + str(datetime.datetime.now()) + "\n"
+            f.write(error)
 
     def on_close(self, ws, close_status_code, close_msg):
         print("### closed ###")
+        with open("logs/FTX.txt", 'a') as f:
+            message = close_msg + " " + str(datetime.datetime.now()) + "\n"
+            f.write(message)
+        self.start()
 
     def on_open(self, ws):
         print("Opened connection")

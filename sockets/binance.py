@@ -1,6 +1,7 @@
 import websocket
 import pandas as pd
 import rel
+import datetime
 from sockets.data import Database
 
 
@@ -31,9 +32,16 @@ class Binance:
 
     def on_error(self, ws, error):
         print(error)
+        with open("logs/Binance.txt", 'a') as f:
+            error = error + " " + str(datetime.datetime.now()) + "\n"
+            f.write(error)
 
     def on_close(self, ws, close_status_code, close_msg):
         print("### closed ###")
+        with open("logs/Binance.txt", 'a') as f:
+            message = close_msg + " " + str(datetime.datetime.now()) + "\n"
+            f.write(message)
+        self.start()
 
     def on_open(self, ws):
         print("Opened connection")
