@@ -14,9 +14,9 @@ class Coinbase:
         self.channel = ["ticker"]
         self.markets = ["ETH-USD", "BTC-USD"]
         self.dump_data = json.dumps({"type": "subscribe",
-                          "product_ids": self.markets,
-                          "channels": self.channel,
-                          })
+                                     "product_ids": self.markets,
+                                     "channels": self.channel,
+                                     })
 
     def push(self, result, db):
         try:
