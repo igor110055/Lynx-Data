@@ -3,23 +3,22 @@ import pandas as pd
 import rel
 import datetime
 from sockets.data import Database
+import json
 
 
-class Binance:
+class Gate:
     def __init__(self):
-        self.uri = "wss://stream.binance.com"
-        self.markets = ['bnbusdt@miniTicker', 'btcusdt@miniTicker']
-        self.stream = '/'.join(self.markets)
-        self.path = "databases/Binance.db"
+        self.uri = "wss://ws.gate.io/v3/"
+        self.markets = ["BTC_USDT", "BNB_USDT"]
+        self.path = "databases/Gate.db"
         self.db = Database(self.path)
+        self.subdata = json.dumps({"id": 12312, "method": "ticker.subscribe", "params": self.markets})
 
     def push(self, res, db):
-        res = eval(res)
-        type(res)
-        data = res['data']
-        data.pop('e')
+        res = json.loads(res)
+        data = res['params'][1]
         df = pd.DataFrame([data])
-        df.to_sql(res['stream'].split('@', 1)[0],
+        df.to_sql(res['params'][0],
                   con=db.connection,
                   if_exists='append')
 
@@ -27,25 +26,27 @@ class Binance:
         print(message)
         self.push(message, self.db)
 
+
     def on_error(self, ws, error):
         print(error)
-        with open("logs/Binance.txt", 'a') as f:
-            error = error + " " + str(datetime.datetime.now()) + "\n"
+        with open("logs/Gate.txt", 'a') as f:
+            error = str(error) + " " + str(datetime.datetime.now()) + "\n"
             f.write(error)
 
     def on_close(self, ws, close_status_code, close_msg):
         print("### closed ###")
-        with open("logs/Binance.txt", 'a') as f:
-            message = close_msg + " " + str(datetime.datetime.now()) + "\n"
+        with open("logs/Gate.txt", 'a') as f:
+            message = str(close_msg) + " " + str(datetime.datetime.now()) + "\n"
             f.write(message)
         self.start()
 
     def on_open(self, ws):
         print("Opened connection")
+        ws.send(self.subdata)
 
     def start(self):
         websocket.enableTrace(True)
-        ws = websocket.WebSocketApp(f"wss://stream.binance.com/stream?streams=" + self.stream,
+        ws = websocket.WebSocketApp(self.uri,
                                     on_open=self.on_open,
                                     on_message=self.on_message,
                                     on_error=self.on_error,

@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4ca19cf1-6b63-4d33-899a-b4345f532c88" name="Changes" comment="Added Logging">
+    <list default="true" id="4ca19cf1-6b63-4d33-899a-b4345f532c88" name="Changes" comment="Added Crypto.com">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/89e7071d-63f4-4338-a3c8-555cd13812d2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/957d974c-345b-419f-9dce-e3c8e66705a0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a196f640-c084-4b41-9e0e-f625fefc2d24.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/c9a0bcea-6d33-4f28-a460-1eca089ba638.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d2725eea-a648-4955-a895-64005adc54c9.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d5093ad4-42cb-4434-869d-2f325ca3a9f1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/df4805a9-efea-4d1e-8723-9c5cdd2413ff.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e6e1ba9e-6037-4ca9-8d1a-809cde779780.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sockets/coinbase.py" beforeDir="false" afterPath="$PROJECT_DIR$/sockets/coinbase.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sockets/binance.py" beforeDir="false" afterPath="$PROJECT_DIR$/sockets/binance.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,16 +44,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Maaz/Desktop/Code/Lynx-Data&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/Maaz/Desktop/Code/Lynx-Data",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Maaz\Desktop\Code\Lynx-Data" />
@@ -190,7 +200,9 @@
       <workItem from="1653288944065" duration="64000" />
       <workItem from="1653289191540" duration="2512000" />
       <workItem from="1653291858698" duration="338000" />
-      <workItem from="1653406898878" duration="3029000" />
+      <workItem from="1653406898878" duration="4440000" />
+      <workItem from="1653487052580" duration="731000" />
+      <workItem from="1653492707881" duration="4834000" />
     </task>
     <task id="LOCAL-00001" summary="Added Huobi">
       <created>1653063332492</created>
@@ -227,7 +239,21 @@
       <option name="project" value="LOCAL" />
       <updated>1653291636092</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Cleaner Code">
+      <created>1653410129048</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1653410129048</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Added Crypto.com">
+      <created>1653410147809</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1653410147809</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -249,7 +275,9 @@
     <MESSAGE value="Added Push to DB" />
     <MESSAGE value="Added Sys Path" />
     <MESSAGE value="Added Logging" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Logging" />
+    <MESSAGE value="Cleaner Code" />
+    <MESSAGE value="Added Crypto.com" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Crypto.com" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Lynx_Data$Binance.coverage" NAME="Binance Coverage Results" MODIFIED="1653282232922" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/sockets" />
@@ -261,6 +289,6 @@
     <SUITE FILE_PATH="coverage/Lynx_Data$ftx.coverage" NAME="ftx Coverage Results" MODIFIED="1653408714122" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/sockets" />
     <SUITE FILE_PATH="coverage/Lynx_Data$huobi.coverage" NAME="huobi Coverage Results" MODIFIED="1653195872133" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Huobi" />
     <SUITE FILE_PATH="coverage/Lynx_Data$bitfinex.coverage" NAME="bitfinex Coverage Results" MODIFIED="1653276422083" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Bitfinex" />
-    <SUITE FILE_PATH="coverage/Lynx_Data$main.coverage" NAME="main Coverage Results" MODIFIED="1653409935624" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Lynx_Data$main.coverage" NAME="main Coverage Results" MODIFIED="1653497561701" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

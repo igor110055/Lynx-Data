@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dataSource name="Ftx">
+<dataSource name="Bybit">
   <database-model serializer="dbm" dbms="SQLITE" family-id="SQLITE" format-version="4.39">
     <root id="1">
       <ServerVersion>3.36.0</ServerVersion>
@@ -1284,8 +1284,8 @@
     <argument id="472" parent="162">
       <Position>1</Position>
     </argument>
-    <table id="473" parent="163" name="BNB/USDT"/>
-    <table id="474" parent="163" name="BTC/USDT"/>
+    <table id="473" parent="163" name="BTCUSD"/>
+    <table id="474" parent="163" name="ETHUSD"/>
     <table id="475" parent="163" name="sqlite_master">
       <System>1</System>
     </table>
@@ -1293,81 +1293,157 @@
       <DataType>INTEGER|0s</DataType>
       <Position>1</Position>
     </column>
-    <column id="477" parent="473" name="bid">
-      <DataType>REAL|0s</DataType>
+    <column id="477" parent="473" name="id">
+      <DataType>INTEGER|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="478" parent="473" name="ask">
-      <DataType>REAL|0s</DataType>
+    <column id="478" parent="473" name="symbol">
+      <DataType>TEXT|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="479" parent="473" name="bidSize">
-      <DataType>REAL|0s</DataType>
+    <column id="479" parent="473" name="price_24h_pcnt_e6">
+      <DataType>INTEGER|0s</DataType>
       <Position>4</Position>
     </column>
-    <column id="480" parent="473" name="askSize">
-      <DataType>REAL|0s</DataType>
+    <column id="480" parent="473" name="price_1h_pcnt_e6">
+      <DataType>INTEGER|0s</DataType>
       <Position>5</Position>
     </column>
-    <column id="481" parent="473" name="last">
-      <DataType>REAL|0s</DataType>
+    <column id="481" parent="473" name="mark_price_e4">
+      <DataType>INTEGER|0s</DataType>
       <Position>6</Position>
     </column>
-    <column id="482" parent="473" name="time">
-      <DataType>REAL|0s</DataType>
+    <column id="482" parent="473" name="mark_price">
+      <DataType>TEXT|0s</DataType>
       <Position>7</Position>
     </column>
-    <index id="483" parent="473" name="ix_BNB/USDT_index">
+    <column id="483" parent="473" name="index_price_e4">
+      <DataType>INTEGER|0s</DataType>
+      <Position>8</Position>
+    </column>
+    <column id="484" parent="473" name="index_price">
+      <DataType>TEXT|0s</DataType>
+      <Position>9</Position>
+    </column>
+    <column id="485" parent="473" name="cross_seq">
+      <DataType>INTEGER|0s</DataType>
+      <Position>10</Position>
+    </column>
+    <column id="486" parent="473" name="created_at">
+      <DataType>TEXT|0s</DataType>
+      <Position>11</Position>
+    </column>
+    <column id="487" parent="473" name="updated_at">
+      <DataType>TEXT|0s</DataType>
+      <Position>12</Position>
+    </column>
+    <index id="488" parent="473" name="ix_BTCUSD_index">
       <ColNames>index</ColNames>
     </index>
-    <column id="484" parent="474" name="index">
+    <column id="489" parent="474" name="index">
       <DataType>INTEGER|0s</DataType>
       <Position>1</Position>
     </column>
-    <column id="485" parent="474" name="bid">
-      <DataType>REAL|0s</DataType>
+    <column id="490" parent="474" name="id">
+      <DataType>INTEGER|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="486" parent="474" name="ask">
-      <DataType>REAL|0s</DataType>
+    <column id="491" parent="474" name="symbol">
+      <DataType>TEXT|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="487" parent="474" name="bidSize">
-      <DataType>REAL|0s</DataType>
+    <column id="492" parent="474" name="last_price_e4">
+      <DataType>INTEGER|0s</DataType>
       <Position>4</Position>
     </column>
-    <column id="488" parent="474" name="askSize">
-      <DataType>REAL|0s</DataType>
+    <column id="493" parent="474" name="last_price">
+      <DataType>TEXT|0s</DataType>
       <Position>5</Position>
     </column>
-    <column id="489" parent="474" name="last">
-      <DataType>REAL|0s</DataType>
+    <column id="494" parent="474" name="bid1_price_e4">
+      <DataType>INTEGER|0s</DataType>
       <Position>6</Position>
     </column>
-    <column id="490" parent="474" name="time">
-      <DataType>REAL|0s</DataType>
+    <column id="495" parent="474" name="bid1_price">
+      <DataType>TEXT|0s</DataType>
       <Position>7</Position>
     </column>
-    <index id="491" parent="474" name="ix_BTC/USDT_index">
+    <column id="496" parent="474" name="ask1_price_e4">
+      <DataType>INTEGER|0s</DataType>
+      <Position>8</Position>
+    </column>
+    <column id="497" parent="474" name="ask1_price">
+      <DataType>TEXT|0s</DataType>
+      <Position>9</Position>
+    </column>
+    <column id="498" parent="474" name="last_tick_direction">
+      <DataType>TEXT|0s</DataType>
+      <Position>10</Position>
+    </column>
+    <column id="499" parent="474" name="price_24h_pcnt_e6">
+      <DataType>INTEGER|0s</DataType>
+      <Position>11</Position>
+    </column>
+    <column id="500" parent="474" name="price_1h_pcnt_e6">
+      <DataType>INTEGER|0s</DataType>
+      <Position>12</Position>
+    </column>
+    <column id="501" parent="474" name="index_price_e4">
+      <DataType>INTEGER|0s</DataType>
+      <Position>13</Position>
+    </column>
+    <column id="502" parent="474" name="index_price">
+      <DataType>TEXT|0s</DataType>
+      <Position>14</Position>
+    </column>
+    <column id="503" parent="474" name="total_turnover_e8">
+      <DataType>INTEGER|0s</DataType>
+      <Position>15</Position>
+    </column>
+    <column id="504" parent="474" name="turnover_24h_e8">
+      <DataType>INTEGER|0s</DataType>
+      <Position>16</Position>
+    </column>
+    <column id="505" parent="474" name="total_volume">
+      <DataType>INTEGER|0s</DataType>
+      <Position>17</Position>
+    </column>
+    <column id="506" parent="474" name="volume_24h">
+      <DataType>INTEGER|0s</DataType>
+      <Position>18</Position>
+    </column>
+    <column id="507" parent="474" name="cross_seq">
+      <DataType>INTEGER|0s</DataType>
+      <Position>19</Position>
+    </column>
+    <column id="508" parent="474" name="created_at">
+      <DataType>TEXT|0s</DataType>
+      <Position>20</Position>
+    </column>
+    <column id="509" parent="474" name="updated_at">
+      <DataType>TEXT|0s</DataType>
+      <Position>21</Position>
+    </column>
+    <index id="510" parent="474" name="ix_ETHUSD_index">
       <ColNames>index</ColNames>
     </index>
-    <column id="492" parent="475" name="type">
+    <column id="511" parent="475" name="type">
       <DataType>text|0s</DataType>
       <Position>1</Position>
     </column>
-    <column id="493" parent="475" name="name">
+    <column id="512" parent="475" name="name">
       <DataType>text|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="494" parent="475" name="tbl_name">
+    <column id="513" parent="475" name="tbl_name">
       <DataType>text|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="495" parent="475" name="rootpage">
+    <column id="514" parent="475" name="rootpage">
       <DataType>int|0s</DataType>
       <Position>4</Position>
     </column>
-    <column id="496" parent="475" name="sql">
+    <column id="515" parent="475" name="sql">
       <DataType>text|0s</DataType>
       <Position>5</Position>
     </column>

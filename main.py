@@ -1,5 +1,9 @@
 # import os
-from sockets.cryptocom import Crypto
+from sockets.coinflex import Coinflex
+# from sockets.gateio import Gate
+# from sockets.gemini import Gemini
+# from sockets.bybit import Bybit
+# from sockets.cryptocom import Crypto
 # from sockets.bitfinex import Bitfinex
 # from sockets.binance import Binance
 # from sockets.coinbase import Coinbase
@@ -65,5 +69,5 @@ from sockets.cryptocom import Crypto
 # # poloniex = Poloniex()
 
 
-crypto = Crypto()
-crypto.start()
+coinflex = Coinflex()
+coinflex.start()

@@ -2,24 +2,31 @@ import websocket
 import pandas as pd
 import rel
 import datetime
+import json
 from sockets.data import Database
 
 
-class Binance:
+class Crypto:
     def __init__(self):
-        self.uri = "wss://stream.binance.com"
-        self.markets = ['bnbusdt@miniTicker', 'btcusdt@miniTicker']
-        self.stream = '/'.join(self.markets)
-        self.path = "databases/Binance.db"
+        self.uri = "wss://stream.crypto.com/v2/market"
+        self.markets = ["ticker.BTC_USDT", "ticker.ETH_USDT"]
+        self.path = "databases/Cryptocom.db"
         self.db = Database(self.path)
+        self.subdata = json.dumps({
+                        "id": 11,
+                        "method": "subscribe",
+                        "params": {
+                            "channels": self.markets
+                        },
+                        "nonce": 1587523073344
+                        })
 
     def push(self, res, db):
         res = eval(res)
-        type(res)
-        data = res['data']
-        data.pop('e')
-        df = pd.DataFrame([data])
-        df.to_sql(res['stream'].split('@', 1)[0],
+        data = res['result']['data']
+        df = pd.DataFrame([data][0])
+        print(df)
+        df.to_sql(res['result']['instrument_name'],
                   con=db.connection,
                   if_exists='append')
 
@@ -29,23 +36,24 @@ class Binance:
 
     def on_error(self, ws, error):
         print(error)
-        with open("logs/Binance.txt", 'a') as f:
-            error = error + " " + str(datetime.datetime.now()) + "\n"
+        with open("logs/Crypto.txt", 'a') as f:
+            error = str(error) + " " + str(datetime.datetime.now()) + "\n"
             f.write(error)
 
     def on_close(self, ws, close_status_code, close_msg):
         print("### closed ###")
-        with open("logs/Binance.txt", 'a') as f:
-            message = close_msg + " " + str(datetime.datetime.now()) + "\n"
+        with open("logs/Crypto.txt", 'a') as f:
+            message = str(close_msg) + " " + str(datetime.datetime.now()) + "\n"
             f.write(message)
         self.start()
 
     def on_open(self, ws):
         print("Opened connection")
+        ws.send(self.subdata)
 
     def start(self):
         websocket.enableTrace(True)
-        ws = websocket.WebSocketApp(f"wss://stream.binance.com/stream?streams=" + self.stream,
+        ws = websocket.WebSocketApp(self.uri,
                                     on_open=self.on_open,
                                     on_message=self.on_message,
                                     on_error=self.on_error,
@@ -54,3 +62,5 @@ class Binance:
         ws.run_forever(dispatcher=rel)  # Set dispatcher to automatic reconnection
         rel.signal(2, rel.abort)  # Keyboard Interrupt
         rel.dispatch()
+
+

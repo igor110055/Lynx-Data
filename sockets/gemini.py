@@ -5,21 +5,20 @@ import datetime
 from sockets.data import Database
 
 
-class Binance:
+class Gemini:
     def __init__(self):
-        self.uri = "wss://stream.binance.com"
-        self.markets = ['bnbusdt@miniTicker', 'btcusdt@miniTicker']
-        self.stream = '/'.join(self.markets)
-        self.path = "databases/Binance.db"
+        self.uri = "wss://api.gemini.com/v1/multimarketdata?symbols="
+        self.market = ['BTCUSD', 'ETHUSD']
+        self.url = ','.join([str(element) for element in self.market])
+        self.path = "databases/Gemini.db"
         self.db = Database(self.path)
 
     def push(self, res, db):
         res = eval(res)
-        type(res)
-        data = res['data']
-        data.pop('e')
+        data = res['events'][0]
+        data['timestamp'] = res['timestampms']
         df = pd.DataFrame([data])
-        df.to_sql(res['stream'].split('@', 1)[0],
+        df.to_sql(res['events'][0]['symbol'],
                   con=db.connection,
                   if_exists='append')
 
@@ -29,14 +28,14 @@ class Binance:
 
     def on_error(self, ws, error):
         print(error)
-        with open("logs/Binance.txt", 'a') as f:
-            error = error + " " + str(datetime.datetime.now()) + "\n"
+        with open("logs/Gemini.txt", 'a') as f:
+            error = str(error) + " " + str(datetime.datetime.now()) + "\n"
             f.write(error)
 
     def on_close(self, ws, close_status_code, close_msg):
         print("### closed ###")
-        with open("logs/Binance.txt", 'a') as f:
-            message = close_msg + " " + str(datetime.datetime.now()) + "\n"
+        with open("logs/Gemini.txt", 'a') as f:
+            message = str(close_msg) + " " + str(datetime.datetime.now()) + "\n"
             f.write(message)
         self.start()
 
@@ -45,7 +44,8 @@ class Binance:
 
     def start(self):
         websocket.enableTrace(True)
-        ws = websocket.WebSocketApp(f"wss://stream.binance.com/stream?streams=" + self.stream,
+        print(self.url)
+        ws = websocket.WebSocketApp(self.uri + self.url,
                                     on_open=self.on_open,
                                     on_message=self.on_message,
                                     on_error=self.on_error,
