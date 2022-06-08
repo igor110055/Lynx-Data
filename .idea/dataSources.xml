@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="Gemini" uuid="355145c6-5d91-4f0f-9aeb-16c02422e417">
+    <data-source source="LOCAL" name="Arby" uuid="f9e6d224-c7d5-466e-a72f-cea9ddbb9c44">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\Users\Maaz\Desktop\Code\Lynx-Data\databases\Gemini.db</jdbc-url>
+      <jdbc-url>jdbc:sqlite:C:\Users\Maaz\Desktop\Code\Lynx-Data\databases\Arby.db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
       <libraries>
         <library>
@@ -13,31 +13,7 @@
         </library>
       </libraries>
     </data-source>
-    <data-source source="LOCAL" name="Gate" uuid="e358aa7b-a204-4b52-8754-70c3e056a1b7">
-      <driver-ref>sqlite.xerial</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\Users\Maaz\Desktop\Code\Lynx-Data\databases\Gate.db</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-      <libraries>
-        <library>
-          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.36.0.3/sqlite-jdbc-3.36.0.3.jar</url>
-        </library>
-      </libraries>
-    </data-source>
-    <data-source source="LOCAL" name="Coinflex" uuid="3d90420a-fb35-474f-9e75-f4e97bccfb06">
-      <driver-ref>sqlite.xerial</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\Users\Maaz\Desktop\Code\Lynx-Data\databases\Coinflex.db</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-      <libraries>
-        <library>
-          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.36.0.3/sqlite-jdbc-3.36.0.3.jar</url>
-        </library>
-      </libraries>
-    </data-source>
-    <data-source source="LOCAL" name="Binance" uuid="e5982e25-bcf1-4c5a-a516-9dc4ac14d98e">
+    <data-source source="LOCAL" name="Binance" uuid="35f1064a-6be3-4d63-9d65-e4836e23295a">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
