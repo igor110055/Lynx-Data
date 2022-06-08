@@ -1,0 +1,81 @@
+<meta http-equiv="refresh" content="20" />
+{% extends 'base.html' %}
+{% block styles %}
+{{ super() }}
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/styles.css') }}">
+
+	<style>
+		body { background: #e8f1f9; }
+	</style>
+{% endblock %}
+
+
+
+
+{% block title %}
+Arby List
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+  <div class="row pb-5">
+    <div class="col-md-10 col-lg-8 mx-lg-auto mx-md-auto">
+   <p class="lead alert alert-warning">Binance Trade API</p>
+
+		<form method="POST" action="{{ url_for('arbys')}}">
+			{{ form.csrf_token }}
+			{{ form.pair1.label }}
+			{{ form.pair2.label }}
+			{{ form.pair3.label }}
+			{{ form.pair }}
+			<ul>
+				{% for error in form.pair.errors %}
+				<li style="color: red;">{{ error }}</li>
+				{% endfor %}
+			</ul>
+			{{ form.amount.label }}
+			{{ form.amount }}
+			<ul>
+				{% for error in form.pair.errors %}
+				<li style="color: red;">{{ error }}</li>
+				{% endfor %}
+			</ul>
+			<input type="submit" value="Execute">
+		</form>
+
+      <p class="lead alert alert-warning">This is a list of all the Pairs on Arby</p>
+
+
+
+		<table class="table">
+			<tr>
+				<th>Time</th>
+				<th>Pair</th>
+				<th>Profit</th>
+				<th>Bid</th>
+				<th>Ask</th>
+				<th>Volume</th>
+				<th>Latency</th>
+				<th>Purchased for 100</th>
+			</tr>
+
+			{% for ar in arby %}
+			<tr>
+				<td>{{ ar.time }}</td>
+				<td>{{ ar.pair }}</td>
+				<td>{{ ar.profit }}</td>
+				<td>{{ ar.bid }}</td>
+				<td>{{ ar.ask }}</td>
+				<td>{{ ar.volume }}</td>
+				<td>{{ ar.latency }}</td>
+				<td>{{ ar.purchased }}</td>
+			</tr>
+			{% endfor %}
+		</table>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
